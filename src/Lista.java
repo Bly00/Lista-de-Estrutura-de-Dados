@@ -2,6 +2,7 @@ public class Lista {
 
     Bloco inicio;
 
+
     public Bloco addElemento(int valor,boolean posicaoIncio) {
 
         Bloco novo = null;
@@ -105,7 +106,7 @@ public class Lista {
         Bloco aux = this.inicio;
         int cont =0;
 
-        while(aux!= null) {
+        while(aux != null) {
 
             cont++;
             aux = aux.prox;
@@ -113,4 +114,17 @@ public class Lista {
 
         return cont;
     } 
+
+    public void mostraLista(){
+
+        Bloco atual = inicio;
+
+        while (atual != null) {
+            System.out.println(atual.valor);
+            atual = atual.prox;
+        }
+
+
+
+    }
 }

@@ -4,15 +4,20 @@ public class Fila {
 
     public void push(int novoValor){
 
-        Lista atual = fila;
-
-        atual.addElemento(novoValor, false);
+        this.fila.addElemento(novoValor, false);
 
     }
 
-    public void pop(){
+    public void pop(){ 
 
-        this.fila.removerElementoInicio();
+        if(this.fila.inicio != null){
+
+           this.fila.removerElementoInicio();
+
+        }else{
+            System.out.println("Fila vazia");
+            return;
+        }
 
     }
 
@@ -20,9 +25,11 @@ public class Fila {
 
         System.out.println("Fila:");
 
-        while(fila.inicio != null){
-            System.out.println(fila.inicio.valor);
-            fila.inicio = fila.inicio.prox;
+        Bloco fila = this.fila.inicio;
+
+        while(fila != null){
+            System.out.println(fila.valor);
+            fila = fila.prox;
         }
 
     }
