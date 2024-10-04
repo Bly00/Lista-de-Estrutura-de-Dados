@@ -1,6 +1,7 @@
 public class Fila {
 
     public Lista fila = new Lista();
+    
 
     public void push(int novoValor){
 
@@ -25,13 +26,31 @@ public class Fila {
 
         System.out.println("Fila:");
 
-        Bloco fila = this.fila.inicio;
+        Bloco aux = this.fila.inicio;
 
-        while(fila != null){
-            System.out.println(fila.valor);
-            fila = fila.prox;
+        while(aux != null){
+            System.out.println(aux.valor);
+            aux = aux.prox;
         }
 
+    }
+
+
+    public Pilha pilhaEquivalente(){
+
+        if(this.fila.inicio == null){
+            return null;
+        }
+        
+        Bloco aux = this.fila.inicio;
+        Pilha pilhaEquivalente = new Pilha();
+    
+        while(aux != null){
+            pilhaEquivalente.push(aux.valor);
+            aux = aux.prox;
+        }
+    
+        return pilhaEquivalente;
     }
 
     

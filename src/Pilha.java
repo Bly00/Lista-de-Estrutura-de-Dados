@@ -2,15 +2,15 @@ public class Pilha {
     
     public Lista pilha = new Lista();
 
+
     public void push(int valor) {
 
         this.pilha.addElemento(valor,false);
-
     }
 
-    public Bloco pop() {
+    public void pop() {
 
-        return  this.pilha.removerElementoFim();
+        this.pilha.removerElementoFim();
     }
 
     public void mostrarPilha(){
@@ -23,18 +23,15 @@ public class Pilha {
             System.out.println(atual.valor);
             atual = atual.prox;
         }
-
     }
+
 
     public void topo(){
-
-        Lista atual = pilha;
-
-        System.out.println("Topo: " + atual.localizarBloco(atual.tamanho()).valor);
-
+        System.out.println("Topo: " + this.pilha.localizarBloco(this.pilha.tamanho()).valor);
     }
 
-    public Fila paraFila(){
+
+    public Fila filaEquivalente(){
 
         if(this.pilha.isVazia()){
             System.out.println("Pilha vazia");
@@ -51,6 +48,7 @@ public class Pilha {
         }
 
         return filaEquivalente;
-
     }
+
+
 }

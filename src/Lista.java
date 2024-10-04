@@ -2,7 +2,6 @@ public class Lista {
 
     Bloco inicio;
 
-
     public Bloco addElemento(int valor,boolean posicaoIncio) {
 
         Bloco novo = null;
@@ -90,7 +89,7 @@ public class Lista {
     public Bloco localizarBloco(int pos) {
 
         Bloco aux = this.inicio;
-        int cont =0;
+        int cont = 0;
 
         while(aux!= null && cont < pos -1) {
 
@@ -119,12 +118,43 @@ public class Lista {
 
         Bloco atual = inicio;
 
+        System.out.println("Lista: ");
+
         while (atual != null) {
             System.out.println(atual.valor);
             atual = atual.prox;
         }
 
+    }
 
+    public void inverter(){
+
+        if(this.isVazia()){
+            System.out.println("Lista vaiza");
+            return;
+        }
+
+    
+        Lista listaInvertida = new Lista();
+        Bloco aux = this.inicio;
+        
+        for(int z = this.tamanho(); z > 0; z--){
+
+            listaInvertida.addElementoInicio(aux.valor);
+            aux = aux.prox;
+
+        }
+
+        for(int i = this.tamanho(); i > 0;  i--){
+       this.removerElementoFim();
+    }
+
+
+        aux = listaInvertida.inicio;
+        while(aux != null){
+            this.addElementoFim(aux.valor);
+            aux = aux.prox;
+        }
 
     }
 }
