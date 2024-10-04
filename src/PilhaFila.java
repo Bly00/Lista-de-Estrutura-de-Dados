@@ -2,21 +2,6 @@ public class PilhaFila {
 
     private Fila pilha = new Fila();
 
-    public static void main(String[] args) {
-        
-        PilhaFila pilha = new PilhaFila();
-
-        pilha.push(10);
-        pilha.push(20);
-        pilha.push(30);
-        pilha.push(40);
-        pilha.mostrarPilhaFila();
-        pilha.pop();
-        pilha.mostrarPilhaFila();
-      
-
-    }
-
     public void push(int novoElemento){
 
         this.pilha.push(novoElemento);

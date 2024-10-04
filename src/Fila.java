@@ -2,18 +2,6 @@ public class Fila {
 
     public Lista fila = new Lista();
 
-    public static void main(String[] args) {
-        
-        Fila fila = new Fila();
-
-        fila.push(10);
-        fila.push(20);
-        fila.mostrarFila();
-        fila.pop();
-        fila.mostrarFila();
-
-    }
-
     public void push(int novoValor){
 
         Lista atual = fila;
