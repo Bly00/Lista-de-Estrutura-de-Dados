@@ -1,6 +1,6 @@
 public class Pilha {
     
-    Lista lista = new Lista();
+    public Lista lista = new Lista();
 
     public void push(int valor) {
 
@@ -11,5 +11,13 @@ public class Pilha {
     public Bloco pop() {
 
         return  this.lista.removerElementoFim();
+    }
+
+    public void topo(){
+
+        Lista atual = lista;
+
+        System.out.println("Topo: " + atual.localizarBloco(atual.tamanho()).valor);
+
     }
 }

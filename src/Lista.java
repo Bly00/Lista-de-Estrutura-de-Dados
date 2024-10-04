@@ -52,7 +52,6 @@ public class Lista {
     }
 
     public boolean isVazia() {
-
         return this.inicio == null;
     }
 

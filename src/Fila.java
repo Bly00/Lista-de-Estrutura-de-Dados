@@ -1,37 +1,40 @@
 public class Fila {
 
-    Lista fila = new Lista();
+    public Lista fila = new Lista();
 
+    public static void main(String[] args) {
+        
+        Fila fila = new Fila();
+
+        fila.push(10);
+        fila.push(20);
+        fila.mostrarFila();
+        fila.pop();
+        fila.mostrarFila();
+
+    }
 
     public void push(int novoValor){
 
         Lista atual = fila;
-
-        System.out.println("Adicionado " + novoValor + " a fila");
 
         atual.addElemento(novoValor, false);
 
     }
 
     public void pop(){
-        
-        Lista atual = fila;
 
-        System.out.println("Removido " + atual.inicio.valor + " da fila");
-
-        atual.removerElementoInicio();
+        this.fila.removerElementoInicio();
 
     }
 
     public void mostrarFila(){
 
-        Lista atual = fila;
-        
         System.out.println("Fila:");
 
-        while(atual.inicio != null){
-            System.out.println(atual.inicio.valor);
-            atual.inicio = atual.inicio.prox;
+        while(fila.inicio != null){
+            System.out.println(fila.inicio.valor);
+            fila.inicio = fila.inicio.prox;
         }
 
     }
