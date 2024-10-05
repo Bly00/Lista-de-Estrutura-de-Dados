@@ -2,6 +2,21 @@ public class Lista {
 
     Bloco inicio;
 
+    public static void main(String[] args) {
+        
+        Lista lista = new Lista();
+
+        lista.addElemento(10, false);
+        lista.addElemento(20, false);
+        lista.addElemento(30, false);
+        lista.addElemento(40, 5);
+        lista.addElemento(90, 7);
+       
+        
+        lista.mostraLista();
+
+    }
+
     public Bloco addElemento(int valor,boolean posicaoIncio) {
 
         Bloco novo = null;
@@ -17,6 +32,63 @@ public class Lista {
 
         return novo;
     }
+
+    public void addElemento(int novoValor, int pos){
+
+        if(this.inicio == null){
+            System.out.println("Vazia");
+            return;
+        }
+          
+      
+        Bloco atual = new Bloco();
+        atual.valor = novoValor;
+        atual.pos = pos;
+
+        Lista lista = this;
+        Bloco aux = this.inicio;
+        int cont = 0;
+
+
+        while(aux != null){
+
+            if(aux.pos == atual.pos){
+
+                System.out.println("Aux: " + aux.pos + " / " + aux.valor);
+                System.out.println("Atual: " + atual.pos + " / " + atual.valor);
+
+                if(aux.prox == null){
+
+                    
+
+                }else{
+
+                    
+
+                }
+
+            }
+
+            //-------------------------------------
+
+            if(aux.pos < atual.pos){
+
+                cont++;
+                
+            }
+
+            if(aux.prox == null){
+                lista.localizarBloco(cont).prox = atual;
+            }
+            
+            aux = aux.prox;
+        }
+
+        
+      
+        
+    }
+    
 
     public Bloco removerElementoFim() {
 
@@ -57,12 +129,17 @@ public class Lista {
 
     private Bloco addElementoInicio(int valor) {
 
+        if(!this.isVazia()){
+            System.out.println("Lista vazia");
+            return null;
+        }
+
         Bloco novo = new Bloco();
         novo.valor = valor;
         
         novo.prox = this.inicio;
         this.inicio = novo;
-
+              
         return novo;
     }
 
@@ -78,8 +155,11 @@ public class Lista {
         } else {
 
             novo = new Bloco();
+            novo.pos = this.tamanho();
             novo.valor = valor;
-    
+            novo.usado = true;
+            
+            fim.usado = true;
             fim.prox = novo; 
         }
 
@@ -121,7 +201,7 @@ public class Lista {
         System.out.println("Lista: ");
 
         while (atual != null) {
-            System.out.println(atual.valor);
+            System.out.println("Posiçao " + atual.pos + ": "+ atual.valor);
             atual = atual.prox;
         }
 
@@ -157,4 +237,5 @@ public class Lista {
         }
 
     }
+    
 }
