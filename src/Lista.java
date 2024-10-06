@@ -8,10 +8,13 @@ public class Lista {
 
         lista.addElemento(10, false);
         lista.addElemento(20, false);
-        lista.addElemento(30, false);
-        lista.addElemento(40, 5);
-        lista.addElemento(90, 7);
-       
+        lista.addElemento(50, false);
+        lista.addElemento(60, false);
+
+        lista.addElemento(900, 2);
+        lista.addElemento(600, 7);
+        lista.addElemento(100, 0);
+        lista.addElemento(500, 3);
         
         lista.mostraLista();
 
@@ -33,63 +36,39 @@ public class Lista {
         return novo;
     }
 
-    public void addElemento(int novoValor, int pos){
 
-        if(this.inicio == null){
-            System.out.println("Vazia");
-            return;
-        }
-          
-      
-        Bloco atual = new Bloco();
-        atual.valor = novoValor;
-        atual.pos = pos;
+    public void addElemento(int novoValor, int pos) {
+       
+         if(pos >= tamanho() || isVazia()){
+            this.addElementoFim(novoValor);
+         }else{
 
-        Lista lista = this;
-        Bloco aux = this.inicio;
-        int cont = 0;
+            if(pos  < 1){
+               Bloco novo = new Bloco();
+               novo.valor = novoValor;
+               novo.prox = this.inicio.prox;
+               this.inicio.prox = novo;
+            }else{
 
+                Bloco anterior = localizarBloco(pos + 1);
+                Bloco novo = new Bloco();
+                novo.valor = novoValor;
 
-        while(aux != null){
+                Bloco aux = anterior.prox;
+                anterior.prox = novo;
+                novo.prox = aux;
 
-            if(aux.pos == atual.pos){
-
-                System.out.println("Aux: " + aux.pos + " / " + aux.valor);
-                System.out.println("Atual: " + atual.pos + " / " + atual.valor);
-
-                if(aux.prox == null){
-
-                    
-
-                }else{
-
-                    
-
-                }
-
-            }
-
-            //-------------------------------------
-
-            if(aux.pos < atual.pos){
-
-                cont++;
-                
-            }
-
-            if(aux.prox == null){
-                lista.localizarBloco(cont).prox = atual;
             }
             
-            aux = aux.prox;
-        }
 
-        
-      
-        
+         }
+         
     }
     
+      
+    
 
+      
     public Bloco removerElementoFim() {
 
         Bloco result = null;
@@ -201,7 +180,7 @@ public class Lista {
         System.out.println("Lista: ");
 
         while (atual != null) {
-            System.out.println("Posiçao " + atual.pos + ": "+ atual.valor);
+            System.out.println(atual.valor);
             atual = atual.prox;
         }
 
