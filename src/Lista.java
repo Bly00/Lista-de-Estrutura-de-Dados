@@ -6,18 +6,19 @@ public class Lista {
         
         Lista lista = new Lista();
 
-        lista.addElemento(10, false);
-        lista.addElemento(20, false);
-        lista.addElemento(50, false);
-        lista.addElemento(60, false);
 
-        lista.addElemento(900, 2);
-        lista.addElemento(600, 7);
+        lista.addElementoFim(10);
+        lista.addElementoFim(20);
+        lista.addElementoFim(30);
+        lista.addElementoFim(40);
+        lista.addElementoFim(50);
+        lista.addElemento(200, 48);
         lista.addElemento(100, 0);
-        lista.addElemento(500, 3);
-        
+        lista.removerElementoInicio();
+
         lista.mostraLista();
 
+        lista.mostrarListaInfo();
     }
 
     public Bloco addElemento(int valor,boolean posicaoIncio) {
@@ -28,9 +29,11 @@ public class Lista {
 
             novo = this.addElementoInicio(valor);
 
+
         } else {
 
             novo = this.addElementoFim(valor);
+
         }
 
         return novo;
@@ -41,22 +44,25 @@ public class Lista {
        
          if(pos >= tamanho() || isVazia()){
             this.addElementoFim(novoValor);
+
          }else{
 
-            if(pos  < 1){
-               Bloco novo = new Bloco();
-               novo.valor = novoValor;
-               novo.prox = this.inicio.prox;
-               this.inicio.prox = novo;
+            if(pos  == 0){
+                Bloco novo = new Bloco();
+                novo.valor = novoValor;
+                novo.prox = this.inicio;
+                this.inicio = novo;
             }else{
 
                 Bloco anterior = localizarBloco(pos + 1);
+                System.out.println("Bloco localizado: " + anterior.valor);
                 Bloco novo = new Bloco();
                 novo.valor = novoValor;
 
                 Bloco aux = anterior.prox;
                 anterior.prox = novo;
                 novo.prox = aux;
+                novo.ante = anterior;
 
             }
             
@@ -65,10 +71,7 @@ public class Lista {
          
     }
     
-      
-    
 
-      
     public Bloco removerElementoFim() {
 
         Bloco result = null;
@@ -131,16 +134,17 @@ public class Lista {
         if(fim == null) {
 
             novo = this.addElementoInicio(valor);
+
         } else {
 
             novo = new Bloco();
-            novo.pos = this.tamanho();
             novo.valor = valor;
-            novo.usado = true;
-            
-            fim.usado = true;
-            fim.prox = novo; 
+
+            fim.prox = novo;
+            novo.ante = fim;
+
         }
+
 
         return novo;
     }
@@ -184,6 +188,8 @@ public class Lista {
             atual = atual.prox;
         }
 
+        System.out.println();
+
     }
 
     public void inverter(){
@@ -213,6 +219,65 @@ public class Lista {
         while(aux != null){
             this.addElementoFim(aux.valor);
             aux = aux.prox;
+        }
+
+    }
+
+
+    public void infoElemento(Bloco atual){
+
+        if(this.isVazia()) {
+            System.out.println("lista vazia");
+            return;
+        }else if(atual == null && atual.ante == null){
+            System.out.println("Elemento vazio");
+            return;
+        }
+
+        int ante = 0, pro = 0;
+
+
+        if(atual.ante == null){
+            ante = 1;
+        }
+        if(atual.prox == null){
+            pro = 1;
+        }
+
+        if(ante != 1 && atual == null){
+            System.out.println("Anterior: " + atual.ante.valor);
+            System.out.println("Atual é vazio");
+            System.out.println("Proximo é vazio");
+            return;
+        }
+
+        if(ante != 1 && pro != 1){
+            System.out.println("Anterior: " + atual.ante.valor);
+            System.out.println("Atual: " + atual.valor);
+            System.out.println("Proximo: " + atual.prox.valor);
+            return;
+        }
+
+        if(ante == 1 && pro != 1){
+            System.out.println("Anterior é null");
+            System.out.println("Atual: " + atual.valor);
+            System.out.println("Proximo: " + atual.prox.valor);
+            return;
+        }
+        if(ante != 1 && pro == 1){
+            System.out.println("Anterior: " + atual.ante.valor);
+            System.out.println("Atual: " + atual.valor);
+            System.out.println("Proximo é null");
+            return;
+        }
+
+    }
+
+    public void mostrarListaInfo(){
+
+        for(int i = 1; localizarBloco(i) != null; i++){
+            infoElemento(localizarBloco(i));
+            System.out.println();
         }
 
     }
