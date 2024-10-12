@@ -1,3 +1,4 @@
+
 public class ListaArray {
 
     //lista com array
@@ -10,25 +11,36 @@ public class ListaArray {
 
         ListaArray listaArray = new ListaArray();
 
-        //10
-        //20
-        //25
-        //30
-        //35
-        //40
-
+  
+        //60 10 20 34 58 30 40 10 80 4 50 70 80
+        //60 10 20 30 40 4 80
+       
+        
 
         listaArray.addElementoFim(10);
         listaArray.addElementoFim(20);
         listaArray.addElementoFim(30);
         listaArray.addElementoFim(40);
-        listaArray.addElemento(25, 2);
-        listaArray.addElemento(35, 4);
-        //listaArray.addElemento(15,1);
-        //listaArray.addElemento(50,8);
-        //listaArray.addElemento(45,7);
+        listaArray.addElemento(80,5);
+        listaArray.addElemento(34,2);
+        listaArray.addElemento(4,7);
+        listaArray.addElementoFim(50);
+        listaArray.addElementoInicio(60);
+        listaArray.addElementoFim(70);
+        listaArray.addElementoFim(80);
+        listaArray.addElemento(58,4);
+        listaArray.addElemento(10,7);
 
-    //addElemento posiçao pewcisa ser consertado
+        listaArray.removerElemento(3);
+        listaArray.removerElemento(9);
+        listaArray.removerElemento(6);
+        listaArray.removerElemento(6);
+        listaArray.removerElemento(3);
+        listaArray.removerElemento(6);
+
+     
+
+   
 
         listaArray.mostrarListaArray();
 
@@ -55,11 +67,12 @@ public class ListaArray {
 
         }
 
-        int i = 0;
+        int i;
 
-        for(i = novoInicio.length-1; i > (maximo - 1) - pos; i--){
+        for(i = novoInicio.length - 1; i > pos; i--){
 
-            novoInicio[i] = novoInicio[i-1];
+           novoInicio[i] = novoInicio[i - 1];
+
         }
 
         novoInicio[i] = valor;
@@ -112,8 +125,72 @@ public class ListaArray {
 
     }
 
+    public void removerElemento(int pos){
+
+        if(pos >= maximo - 1){
+            removerElementoFim();
+            return;
+        }
+        if(pos == 0){
+            removerElementoInicio();
+            return;
+        }
+
+       maximo--;
+        int[] novoInicio = new int[maximo];
+
+    
+    for(int i = 0, z = 0; i <= maximo - 1; i++, z++){
+
+        if(z == pos){
+            z++;
+        }
+
+        novoInicio[i] = inicio[z];
+
+    }
+
+        inicio = novoInicio;
+
+    }
+
+    public void removerElementoFim(){
+
+        if(maximo == 0){
+            System.out.println("lista vazia");
+            return;
+        }
+
+        maximo--;
+        int[] novoInicio = new int[maximo];
+
+        for(int i = 0; i < novoInicio.length; i++){
+
+            novoInicio[i] = inicio[i];
+
+        }
+
+        inicio = novoInicio;
+
+    }
+
+
+    public void removerElementoInicio(){
+
+        maximo--;
+        int[] novoInicio = new int[maximo];
+
+        for(int i = 0; i <= novoInicio.length - 1; i++){
+            novoInicio[i] = inicio[i + 1];
+        }
+
+        inicio = novoInicio;
+
+    }
+
     public void mostrarListaArray(){
 
+        System.out.println("Lista de Array:");
         for(int i = 0; i < inicio.length; i++){
             System.out.println(inicio[i]);
         }
