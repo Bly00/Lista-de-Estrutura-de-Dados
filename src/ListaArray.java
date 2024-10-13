@@ -7,46 +7,6 @@ public class ListaArray {
     int[] inicio = new int[maximo];
 
 
-    public static void main(String[] args) {
-
-        ListaArray listaArray = new ListaArray();
-
-  
-        //60 10 20 34 58 30 40 10 80 4 50 70 80
-        //60 10 20 30 40 4 80
-       
-        
-
-        listaArray.addElementoFim(10);
-        listaArray.addElementoFim(20);
-        listaArray.addElementoFim(30);
-        listaArray.addElementoFim(40);
-        listaArray.addElemento(80,5);
-        listaArray.addElemento(34,2);
-        listaArray.addElemento(4,7);
-        listaArray.addElementoFim(50);
-        listaArray.addElementoInicio(60);
-        listaArray.addElementoFim(70);
-        listaArray.addElementoFim(80);
-        listaArray.addElemento(58,4);
-        listaArray.addElemento(10,7);
-
-        listaArray.removerElemento(3);
-        listaArray.removerElemento(9);
-        listaArray.removerElemento(6);
-        listaArray.removerElemento(6);
-        listaArray.removerElemento(3);
-        listaArray.removerElemento(6);
-
-     
-
-   
-
-        listaArray.mostrarListaArray();
-
-    }
-
-
     public void addElemento(int valor, int pos) {
         if (pos > maximo - 1) {
             addElementoFim(valor);

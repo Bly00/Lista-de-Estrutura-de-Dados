@@ -7,18 +7,28 @@ public class Lista {
         Lista lista = new Lista();
 
 
-        lista.addElementoFim(10);
-        lista.addElementoFim(20);
-        lista.addElementoFim(30);
-        lista.addElementoFim(40);
         lista.addElementoFim(50);
-        lista.addElemento(200, 48);
-        lista.addElemento(100, 0);
-        lista.removerElementoInicio();
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+        lista.addElementoFim(50);
+       
+        
+       
+        lista.removerDuplicados();
+        
+     
+        
 
-        lista.mostraLista();
+       
 
-        lista.mostrarListaInfo();
+      
     }
 
     public Bloco addElemento(int valor,boolean posicaoIncio) {
@@ -70,6 +80,29 @@ public class Lista {
          }
          
     }
+
+    public void removerElemento(int pos){
+
+        if(pos == 0){
+            removerElementoFim();
+            return;
+        }
+        if(pos == tamanho()){
+            removerElementoFim();
+            return;
+        }
+
+
+        
+        Bloco target = this.localizarBloco(pos);
+    
+        
+        target.prox = target.prox.prox;
+       
+      
+    }
+
+   
     
 
     public Bloco removerElementoFim() {
@@ -89,6 +122,7 @@ public class Lista {
     
             result = target.prox;
             target.prox = null;
+
         }
 
         return result;
@@ -281,5 +315,56 @@ public class Lista {
         }
 
     }
-    
+
+    public Lista acharPorValor(int valor){
+
+        Bloco atual = this.inicio;
+        Lista listaRepetidos = new Lista();
+      
+        for(int i = 0; atual != null; i++){
+
+        
+                if(atual.valor == valor){
+
+                    listaRepetidos.addElementoFim(i);
+
+                }
+            
+
+            atual = atual.prox;
+
+        }
+        
+        listaRepetidos.mostraLista();
+
+        return listaRepetidos;
+
+    }
+
+    public void removerDuplicados(){
+
+    Bloco atual = this.inicio;
+    Bloco atualAux = null;
+    Lista aux = new Lista();
+
+    while(atual != null){
+
+        aux = acharPorValor(atual.valor);
+        atualAux = aux.inicio;
+
+        while(atualAux.prox != null){
+
+            removerElemento(atualAux.valor);
+
+            atualAux = atualAux.prox;
+        }
+
+        atual = atual.prox;
+
+    }
+
+}
+
+
+
 }
