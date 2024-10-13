@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Lista {
 
     Bloco inicio;
@@ -5,23 +7,30 @@ public class Lista {
     public static void main(String[] args) {
         
         Lista lista = new Lista();
+        Scanner sc = new Scanner(System.in);
 
 
         lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-        lista.addElementoFim(50);
-       
+        lista.addElementoFim(20);
+        lista.addElementoFim(80);//
+        lista.addElementoFim(50);//
+        lista.addElementoFim(60);//
+        lista.addElementoFim(60);//
+        lista.addElementoFim(80);//
+        lista.addElementoFim(20);
+        lista.addElementoFim(60);//
+        lista.addElementoFim(30);
+        lista.addElementoFim(30);
+        lista.addElementoFim(60);//
+        
         
        
+
         lista.removerDuplicados();
+
+        lista.mostraLista();
+        
+       
         
      
         
@@ -83,23 +92,22 @@ public class Lista {
 
     public void removerElemento(int pos){
 
+        if(pos < 0 || pos >= tamanho()){
+            return;
+        }
+
         if(pos == 0){
-            removerElementoFim();
+            this.inicio = this.inicio.prox;
             return;
         }
-        if(pos == tamanho()){
-            removerElementoFim();
+        if(pos == tamanho() - 1){
+            this.removerElementoFim();
             return;
         }
 
-
-        
         Bloco target = this.localizarBloco(pos);
-    
-        
         target.prox = target.prox.prox;
-       
-      
+
     }
 
    
@@ -315,56 +323,92 @@ public class Lista {
         }
 
     }
-
-    public Lista acharPorValor(int valor){
-
+    
+    public Lista acharPorValor(int valor) {
         Bloco atual = this.inicio;
         Lista listaRepetidos = new Lista();
-      
-        for(int i = 0; atual != null; i++){
+    
+        for (int i = 0; atual != null; i++) {
+            if (atual.valor == valor) {
+                listaRepetidos.addElementoFim(i); // Armazena o índice
+            }
+            atual = atual.prox;
+        }
+    
+        return listaRepetidos;
+    }
 
-        
-                if(atual.valor == valor){
+    /*public void removerDuplicados(){
 
-                    listaRepetidos.addElementoFim(i);
+        Bloco atual = this.inicio;
+        Lista aux = null;
 
-                }
+        while(atual != null){
+
+            System.out.println("valor veerificado: " + atual.valor);
+
+            aux = acharPorValor(atual.valor);
+            Bloco aux2 = aux.inicio;
+
+            int tam = aux.tamanho();
+
+
+            if(aux2.prox != null){
+            }else{
+                aux2 = aux2.prox;
+            }
             
+            while(aux2.prox != null && tam > 1){
+
+                removerElemento(aux2.valor);
+
+                aux2 = aux2.prox;
+
+            }
 
             atual = atual.prox;
-
         }
-        
-        listaRepetidos.mostraLista();
 
-        return listaRepetidos;
+}*/
 
-    }
-
-    public void removerDuplicados(){
-
+public void removerDuplicados() {
     Bloco atual = this.inicio;
-    Bloco atualAux = null;
-    Lista aux = new Lista();
 
-    while(atual != null){
+    while (atual != null) {
+        // Encontre todas as ocorrências do valor atual
+        Lista aux = acharPorValor(atual.valor);
 
-        aux = acharPorValor(atual.valor);
-        atualAux = aux.inicio;
+        // Se há mais de uma ocorrência, remova as duplicatas
+        if (aux.tamanho() > 1) {
+            // A primeira ocorrência já está em 'atual'
+            Bloco proximo = atual.prox;
 
-        while(atualAux.prox != null){
+            // Remover as duplicatas
+            for (int i = 1; i < aux.tamanho(); i++) {
+                // Remova a duplicata
+                removerElemento(aux.getElemento(i)); // assume que você tenha um método getElemento que retorna o valor pelo índice
+            }
 
-            removerElemento(atualAux.valor);
-
-            atualAux = atualAux.prox;
+            // Mova o ponteiro atual para o próximo
+            atual = proximo; 
+        } else {
+            atual = atual.prox; // avança apenas se não houver duplicatas
         }
-
-        atual = atual.prox;
-
     }
-
 }
 
 
+public int getElemento(int pos) {
+    if (pos < 0 || pos >= tamanho()) {
+        throw new IndexOutOfBoundsException("Posição inválida");
+    }
+
+    Bloco atual = this.inicio;
+    for (int i = 0; i < pos; i++) {
+        atual = atual.prox; // Avança para o próximo bloco
+    }
+
+    return atual.valor; // Retorna o valor do bloco na posição desejada
+}
 
 }
