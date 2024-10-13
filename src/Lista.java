@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Lista {
 
     Bloco inicio;
@@ -7,37 +5,25 @@ public class Lista {
     public static void main(String[] args) {
         
         Lista lista = new Lista();
-        Scanner sc = new Scanner(System.in);
-
-
-        lista.addElementoFim(50);
+      
+        Lista listaMaiores = new Lista();
+      
+    
+        lista.addElementoFim(10);
+        lista.addElementoFim(20); 
+        lista.addElementoFim(60);//
+        lista.addElementoFim(20);
+        lista.addElementoFim(70);//
+        lista.addElementoFim(90);//
         lista.addElementoFim(20);
         lista.addElementoFim(80);//
         lista.addElementoFim(50);//
         lista.addElementoFim(60);//
-        lista.addElementoFim(60);//
-        lista.addElementoFim(80);//
-        lista.addElementoFim(20);
-        lista.addElementoFim(60);//
-        lista.addElementoFim(30);
-        lista.addElementoFim(30);
-        lista.addElementoFim(60);//
-        
-        
-       
 
-        lista.removerDuplicados();
+        listaMaiores = lista.localizarMaior(30);
 
-        lista.mostraLista();
-        
-       
-        
-     
-        
+        listaMaiores.mostraLista();
 
-       
-
-      
     }
 
     public Bloco addElemento(int valor,boolean posicaoIncio) {
@@ -110,8 +96,6 @@ public class Lista {
 
     }
 
-   
-    
 
     public Bloco removerElementoFim() {
 
@@ -271,7 +255,7 @@ public class Lista {
         if(this.isVazia()) {
             System.out.println("lista vazia");
             return;
-        }else if(atual == null && atual.ante == null){
+        }else if(atual == null){
             System.out.println("Elemento vazio");
             return;
         }
@@ -286,13 +270,7 @@ public class Lista {
             pro = 1;
         }
 
-        if(ante != 1 && atual == null){
-            System.out.println("Anterior: " + atual.ante.valor);
-            System.out.println("Atual é vazio");
-            System.out.println("Proximo é vazio");
-            return;
-        }
-
+    
         if(ante != 1 && pro != 1){
             System.out.println("Anterior: " + atual.ante.valor);
             System.out.println("Atual: " + atual.valor);
@@ -338,61 +316,25 @@ public class Lista {
         return listaRepetidos;
     }
 
-    /*public void removerDuplicados(){
-
-        Bloco atual = this.inicio;
-        Lista aux = null;
-
-        while(atual != null){
-
-            System.out.println("valor veerificado: " + atual.valor);
-
-            aux = acharPorValor(atual.valor);
-            Bloco aux2 = aux.inicio;
-
-            int tam = aux.tamanho();
-
-
-            if(aux2.prox != null){
-            }else{
-                aux2 = aux2.prox;
-            }
-            
-            while(aux2.prox != null && tam > 1){
-
-                removerElemento(aux2.valor);
-
-                aux2 = aux2.prox;
-
-            }
-
-            atual = atual.prox;
-        }
-
-}*/
-
 public void removerDuplicados() {
     Bloco atual = this.inicio;
 
     while (atual != null) {
-        // Encontre todas as ocorrências do valor atual
+       
         Lista aux = acharPorValor(atual.valor);
 
-        // Se há mais de uma ocorrência, remova as duplicatas
         if (aux.tamanho() > 1) {
-            // A primeira ocorrência já está em 'atual'
+          
             Bloco proximo = atual.prox;
 
-            // Remover as duplicatas
             for (int i = 1; i < aux.tamanho(); i++) {
-                // Remova a duplicata
-                removerElemento(aux.getElemento(i)); // assume que você tenha um método getElemento que retorna o valor pelo índice
+              
+                removerElemento(aux.getElemento(i)); 
             }
 
-            // Mova o ponteiro atual para o próximo
             atual = proximo; 
         } else {
-            atual = atual.prox; // avança apenas se não houver duplicatas
+            atual = atual.prox; 
         }
     }
 }
@@ -410,5 +352,55 @@ public int getElemento(int pos) {
 
     return atual.valor; // Retorna o valor do bloco na posição desejada
 }
+
+    public Lista concatena(Lista l2){
+
+        Bloco atual = l2.inicio;
+        Lista novaListaConcatenada = this;
+
+        while(atual != null){
+            novaListaConcatenada.addElementoFim(atual.valor);
+            atual = atual.prox;
+        }
+
+        return novaListaConcatenada;
+
+    }
+
+    public Lista clone(){
+
+      Lista novoListaClonada = new Lista();
+      Bloco atual = this.inicio;
+
+      while(atual != null){
+
+        novoListaClonada.addElementoFim(atual.valor);
+        atual = atual.prox;
+      }  
+
+      return novoListaClonada;
+
+    }
+
+    public Lista localizarMaior(int valor){
+
+        Lista listaComMaiores = new Lista();
+        
+        Bloco atual = this.inicio;
+
+        while(atual != null){
+
+            if(atual.valor > valor){
+                listaComMaiores.addElementoFim(atual.valor);
+            }
+
+            atual = atual.prox;
+        }
+
+        return listaComMaiores;
+
+    }
+
+    
 
 }
