@@ -25,6 +25,8 @@ public class JogoDaVelha {
 
         int pos = 0;
         int status = 0;
+        int quantJogadas = 0;
+
         while(true){
 
         System.out.println("Escolha posicao");
@@ -58,23 +60,28 @@ public class JogoDaVelha {
 
         }
 
+        quantJogadas++;
+
         mostrarJogo(jogo);
 
         status = verificarJogo(jogo);
 
-        if(status != 0){
+        if(status != 0 || quantJogadas == 9){
             break;
         }
         jogador = !jogador;
 
     }
 
-    }
+    sc.close();
 
-    if(status == 1){
+    }
+    if(status == 0){
+        System.out.println("Empate");
+    }else if(status == 1){
         System.out.println("X foi o ganhador");
     }
-    if(status == 2){
+    else if(status == 2){
         System.out.println("0 foi o ganhador");
     }
 
@@ -195,8 +202,6 @@ public class JogoDaVelha {
     }
 
     public static int verificarJogo(Lista jogo){
-
-        Bloco atual = jogo.inicio;
 
         if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(2).valor == 1 && jogo.localizarBloco(3).valor == 1)){
             return 1;
