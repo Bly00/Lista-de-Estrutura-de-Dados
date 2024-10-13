@@ -92,169 +92,168 @@ public class JogoDaVelha {
 
         Bloco atual = jogo.inicio;
 
-       if(atual.valor == 0){
-            System.out.print("_/");
-       }
-       if(atual.valor == 1){
-            System.out.print("X/");
-       }
-       if(atual.valor == 2){
-            System.out.print("0/");
-       }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
 
-       atual = atual.prox;
+    atual = atual.prox;
 
-       if(atual.valor == 0){
-        System.out.print("_/");
-         }
-        if(atual.valor == 1){
-        System.out.print("X/");
-         }
-         if(atual.valor == 2){
-        System.out.print("0/");
-        }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
 
-        atual = atual.prox;
+    atual = atual.prox;
 
-        if(atual.valor == 0){
-            System.out.println("_");
-             }
-            if(atual.valor == 1){
-            System.out.println("X");
-             }
-             if(atual.valor == 2){
-            System.out.println("0");
-            }
+    if(atual.valor == 0){
+    System.out.println("_");
+    }
+    if(atual.valor == 1){
+    System.out.println("X");
+    }
+    if(atual.valor == 2){
+    System.out.println("0");
+    }
 
-            atual = atual.prox;
+    atual = atual.prox;
 
-            if(atual.valor == 0){
-                System.out.print("_/");
-           }
-           if(atual.valor == 1){
-                System.out.print("X/");
-           }
-           if(atual.valor == 2){
-                System.out.print("0/");
-           }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
     
-           atual = atual.prox;
+    atual = atual.prox;
     
-           if(atual.valor == 0){
-            System.out.print("_/");
-             }
-            if(atual.valor == 1){
-            System.out.print("X/");
-             }
-             if(atual.valor == 2){
-            System.out.print("0/");
-            }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
     
-            atual = atual.prox;
+    atual = atual.prox;
     
-            if(atual.valor == 0){
-                System.out.println("_");
-                 }
-                if(atual.valor == 1){
-                System.out.println("X");
-                 }
-                 if(atual.valor == 2){
-                System.out.println("0");
-                }
+    if(atual.valor == 0){
+    System.out.println("_");
+    }
+    if(atual.valor == 1){
+    System.out.println("X");
+    }
+    if(atual.valor == 2){
+    System.out.println("0");
+    }
 
-                atual = atual.prox;
+    atual = atual.prox;
 
-                if(atual.valor == 0){
-                    System.out.print("_/");
-               }
-               if(atual.valor == 1){
-                    System.out.print("X/");
-               }
-               if(atual.valor == 2){
-                    System.out.print("0/");
-               }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
         
-               atual = atual.prox;
+    atual = atual.prox;
         
-               if(atual.valor == 0){
-                System.out.print("_/");
-                 }
-                if(atual.valor == 1){
-                System.out.print("X/");
-                 }
-                 if(atual.valor == 2){
-                System.out.print("0/");
-                }
+    if(atual.valor == 0){
+    System.out.print("_/");
+    }
+    if(atual.valor == 1){
+    System.out.print("X/");
+    }
+    if(atual.valor == 2){
+    System.out.print("0/");
+    }
         
-                atual = atual.prox;
+    atual = atual.prox;
         
-                if(atual.valor == 0){
-                    System.out.println("_");
-                     }
-                    if(atual.valor == 1){
-                    System.out.println("X");
-                     }
-                     if(atual.valor == 2){
-                    System.out.println("0");
-                    }
+    if(atual.valor == 0){
+    System.out.println("_");
+    }
+    if(atual.valor == 1){
+    System.out.println("X");
+    }
+    if(atual.valor == 2){
+    System.out.println("0");
+    }
     
 
     }
 
     public static int verificarJogo(Lista jogo){
 
-        if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(2).valor == 1 && jogo.localizarBloco(3).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(4).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(6).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(7).valor == 1 && (jogo.localizarBloco(8).valor == 1 && jogo.localizarBloco(9).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(4).valor == 1 && jogo.localizarBloco(7).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(2).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(8).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(3).valor == 1 && (jogo.localizarBloco(6).valor == 1 && jogo.localizarBloco(9).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(9).valor == 1)){
-            return 1;
-        }
-        if(jogo.localizarBloco(3).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(7).valor == 1)){
-            return 1;
-        }
+    if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(2).valor == 1 && jogo.localizarBloco(3).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(4).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(6).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(7).valor == 1 && (jogo.localizarBloco(8).valor == 1 && jogo.localizarBloco(9).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(4).valor == 1 && jogo.localizarBloco(7).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(2).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(8).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(3).valor == 1 && (jogo.localizarBloco(6).valor == 1 && jogo.localizarBloco(9).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(1).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(9).valor == 1)){
+        return 1;
+    }
+    if(jogo.localizarBloco(3).valor == 1 && (jogo.localizarBloco(5).valor == 1 && jogo.localizarBloco(7).valor == 1)){
+        return 1;
+    }
 
         
 
-        if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(2).valor == 2 && jogo.localizarBloco(3).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(4).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(6).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(7).valor == 2 && (jogo.localizarBloco(8).valor == 2 && jogo.localizarBloco(9).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(4).valor == 2 && jogo.localizarBloco(7).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(2).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(8).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(3).valor == 2 && (jogo.localizarBloco(6).valor == 2 && jogo.localizarBloco(9).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(9).valor == 2)){
-            return 2;
-        }
-        if(jogo.localizarBloco(3).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(7).valor == 2)){
-            return 2;
-        }
-
+    if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(2).valor == 2 && jogo.localizarBloco(3).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(4).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(6).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(7).valor == 2 && (jogo.localizarBloco(8).valor == 2 && jogo.localizarBloco(9).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(4).valor == 2 && jogo.localizarBloco(7).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(2).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(8).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(3).valor == 2 && (jogo.localizarBloco(6).valor == 2 && jogo.localizarBloco(9).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(1).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(9).valor == 2)){
+        return 2;
+    }
+    if(jogo.localizarBloco(3).valor == 2 && (jogo.localizarBloco(5).valor == 2 && jogo.localizarBloco(7).valor == 2)){
+        return 2;
+    }
         return 0; 
 
     }
