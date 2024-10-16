@@ -5,25 +5,20 @@ public class Lista {
     public static void main(String[] args) {
         
         Lista lista = new Lista();
-      
-        Lista listaMaiores = new Lista();
-      
-    
-        lista.addElementoFim(10);
-        lista.addElementoFim(20); 
-        lista.addElementoFim(60);//
-        lista.addElementoFim(20);
-        lista.addElementoFim(70);//
-        lista.addElementoFim(90);//
-        lista.addElementoFim(20);
-        lista.addElementoFim(80);//
-        lista.addElementoFim(50);//
-        lista.addElementoFim(60);//
 
-        listaMaiores = lista.localizarMaior(30);
+        lista.addElementoFim(0);
+        lista.addElementoFim(54);
+        lista.addElementoFim(2);
+        lista.addElementoFim(3);
+        lista.addElementoFim(4);
+        lista.addElementoFim(5);
+        lista.addElementoFim(98);
+        lista.addElementoFim(7);
 
-        listaMaiores.mostraLista();
+     
 
+       
+        System.out.println("Bloco localizado: " + lista.localizarBloco(6).valor );
     }
 
     public Bloco addElemento(int valor,boolean posicaoIncio) {
@@ -60,7 +55,6 @@ public class Lista {
             }else{
 
                 Bloco anterior = localizarBloco(pos + 1);
-                System.out.println("Bloco localizado: " + anterior.valor);
                 Bloco novo = new Bloco();
                 novo.valor = novoValor;
 
@@ -138,7 +132,7 @@ public class Lista {
     private Bloco addElementoInicio(int valor) {
 
         if(!this.isVazia()){
-            System.out.println("Lista vazia");
+            System.out.println("Lista Vazia");
             return null;
         }
 
@@ -155,13 +149,20 @@ public class Lista {
 
         Bloco novo = null;
 
-        Bloco fim = this.localizarBloco(this.tamanho());
+        //Bloco fim = this.localizarBloco(this.tamanho());
+
+        Bloco fim = this.inicio;
+
 
         if(fim == null) {
 
             novo = this.addElementoInicio(valor);
 
         } else {
+
+            while(fim.prox != null){
+                fim = fim.prox;
+            }
 
             novo = new Bloco();
             novo.valor = valor;
