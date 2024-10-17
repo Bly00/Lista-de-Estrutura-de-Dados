@@ -6,39 +6,61 @@ public class ListaRecursiva {
         
         ListaRecursiva listaRecursiva = new ListaRecursiva();
 
-        listaRecursiva.addBloco(0);
-        listaRecursiva.addBloco(1);
-        listaRecursiva.addBloco(2);
-        listaRecursiva.addBloco(3);
-        listaRecursiva.addBloco(4);
 
         listaRecursiva.mostraLista();
 
     }
 
 
-    public Bloco addBloco(int valor){
+    public void addBloco(int valor){
 
-        Bloco novo = localizarBloco(tamanho());
-        novo.valor = valor;
-        int n = 0;
-        
+        Bloco novoBloco = new Bloco();
+        novoBloco.valor = valor;
 
-        if(novo.prox == null){
-            this.inicio.prox = novo;
-            return novo;
+        if(inicio == null){
+            inicio = novoBloco;
         }else{
-            return addBloco(valor);
+            addRecursivo(inicio, novoBloco);
+        }
+
+    }
+
+    private void addRecursivo(Bloco atual, Bloco novoBloco){
+
+        if(atual.prox == null){
+            atual.prox = novoBloco;
+        }else{
+            addRecursivo(atual.prox, novoBloco);
+        }
+
+    }
+
+    public void removerBlocoFim(){
+
+        if(inicio == null){
+        }
+        else{
+            removerFimRecursivo(inicio);
+        }
+
+    }
+
+    private void removerFimRecursivo(Bloco atual){
+
+        if(atual.prox.prox != null){
+            removerFimRecursivo(atual.prox);
+        }else{
+            atual.prox = null;
         }
 
     }
 
    
-    private int tamanho(){
+    public int tamanho(){
         return calcularTamanhoInicial(inicio);
     }
 
-    public int calcularTamanhoInicial(Bloco bloco){
+    private int calcularTamanhoInicial(Bloco bloco){
 
       if(bloco == null){
         return 0;
@@ -50,11 +72,11 @@ public class ListaRecursiva {
 
     }
 
-    private Bloco localizarBloco(int pos){
+     public Bloco localizarBloco(int pos){
         return avancarBlocos(inicio, pos);
      }
  
-     public Bloco avancarBlocos(Bloco bloco, int pos){
+     private Bloco avancarBlocos(Bloco bloco, int pos){
  
         if(pos > 0){
          return avancarBlocos(bloco.prox, pos - 1);
