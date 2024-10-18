@@ -47,6 +47,7 @@ public class JogoDaVelha {
             }else{
                 System.out.println("Essa posicao ja esta oculpada");
                 jogador = !jogador;
+                quantJogadas--;
             }
 
         }else{
@@ -56,6 +57,7 @@ public class JogoDaVelha {
             }else{
                 System.out.println("Essa posicao ja esta oculpada");
                 jogador = !jogador;
+                quantJogadas--;
             }
 
         }
@@ -73,7 +75,7 @@ public class JogoDaVelha {
 
     }
 
-    sc.close();
+  
 
     }
     if(status == 0){
@@ -85,6 +87,7 @@ public class JogoDaVelha {
         System.out.println("0 foi o ganhador");
     }
 
+    sc.close();
 
     }
 

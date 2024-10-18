@@ -2,16 +2,6 @@ public class ListaRecursiva {
 
     Bloco inicio;
 
-    public static void main(String[] args) {
-        
-        ListaRecursiva listaRecursiva = new ListaRecursiva();
-
-
-        listaRecursiva.mostraLista();
-
-    }
-
-
     public void addBloco(int valor){
 
         Bloco novoBloco = new Bloco();

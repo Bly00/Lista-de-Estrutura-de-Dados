@@ -2,24 +2,7 @@ public class Lista {
 
     Bloco inicio;
 
-    public static void main(String[] args) {
-        
-        Lista lista = new Lista();
-
-        lista.addElementoFim(0);
-        lista.addElementoFim(54);
-        lista.addElementoFim(2);
-        lista.addElementoFim(3);
-        lista.addElementoFim(4);
-        lista.addElementoFim(5);
-        lista.addElementoFim(98);
-        lista.addElementoFim(7);
-
-     
-
-       
-        System.out.println("Bloco localizado: " + lista.localizarBloco(6).valor );
-    }
+   
 
     public Bloco addElemento(int valor,boolean posicaoIncio) {
 
@@ -140,8 +123,9 @@ public class Lista {
         novo.valor = valor;
         
         novo.prox = this.inicio;
+        this.inicio.ante = novo;
         this.inicio = novo;
-              
+
         return novo;
     }
 
@@ -343,15 +327,16 @@ public void removerDuplicados() {
 
 public int getElemento(int pos) {
     if (pos < 0 || pos >= tamanho()) {
-        throw new IndexOutOfBoundsException("Posição inválida");
+        System.out.println("Fora dos limites");
+        return 0;
     }
 
     Bloco atual = this.inicio;
     for (int i = 0; i < pos; i++) {
-        atual = atual.prox; // Avança para o próximo bloco
+        atual = atual.prox; 
     }
 
-    return atual.valor; // Retorna o valor do bloco na posição desejada
+    return atual.valor; 
 }
 
     public Lista concatena(Lista l2){

@@ -8,9 +8,20 @@ public class Pilha {
         this.pilha.addElemento(valor,false);
     }
 
-    public void pop() {
+    public int pop() {
+
+        Bloco atual = this.pilha.inicio;
+
+        while(atual.prox != null){
+            atual = atual.prox;
+        }
+
+        int pop = atual.valor;
 
         this.pilha.removerElementoFim();
+
+        return pop;
+
     }
 
     public void mostrarPilha(){
@@ -26,8 +37,8 @@ public class Pilha {
     }
 
 
-    public void topo(){
-        System.out.println("Topo: " + this.pilha.localizarBloco(this.pilha.tamanho()).valor);
+    public Bloco topo(){
+        return this.pilha.localizarBloco(this.pilha.tamanho());
     }
 
 
